@@ -7,7 +7,7 @@ saltstack-openstack
 ========
 
 **1.Openstack架构**
-![架构图](http://github.com/unixhot/saltstack-openstack/openstack.jpg)  
+![架构图](https://github.com/unixhot/saltstack-openstack/blob/master/openstack.jpg)  
 
 **2.目录结构**
 
@@ -49,8 +49,13 @@ saltstack-openstack
     |   |-- nova.sls
     |   `-- quantum.sls
     `-- top.sls
-
 ``` 
+
+**3.介绍**
+
+1.每个服务均有一个SLS目录。每个目录下均有SLS和files目录。files目录放置源码包和配置文件。
+2.每个服务均有一个Pillar文件，主要定义和配置相关的如IP地址、网络接口、用户名和密码等。
+
 使用步骤
 ========
 
