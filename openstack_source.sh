@@ -17,9 +17,13 @@ wget https://launchpad.net/glance/grizzly/2013.1.2/+download/glance-2013.1.2.tar
 wget https://launchpad.net/quantum/grizzly/2013.1.2/+download/quantum-2013.1.2.tar.gz
 wget https://launchpad.net/keystone/grizzly/2013.1.2/+download/keystone-2013.1.2.tar.gz
 wget https://launchpad.net/horizon/grizzly/2013.1.2/+download/horizon-2013.1.2.tar.gz
+wget http://www.unixhot.com/noVNC.tar.gz
+wget http://www.unixhot.com/websockify.tar.gz
 
 mv nova-2013.1.2.tar.gz ./openstack/nova/files/
 mv glance-2013.1.2.tar.gz ./openstack/glance/files/
 mv quantum-2013.1.2.tar.gz ./openstack/quantum/files/
 mv keystone-2013.1.2.tar.gz ./openstack/keystone/files/
 mv horizon-2013.1.2.tar.gz ./openstack/horizon/files/
+mv noVNC.tar.gz ./openstack/horizon/files/
+mv websockify.tar.gz ./openstack/horizon/files/
