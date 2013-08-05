@@ -6,7 +6,8 @@ saltstack-openstack
 架构概述
 ========
 
-**
+**1.Openstack架构**
+![架构图](http://github.com/unixhot/saltstack-openstack/openstack.jpg)  
 
 **2.目录结构**
 
