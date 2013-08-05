@@ -1,12 +1,103 @@
 saltstack-openstack
 ===================
 
-使用Saltstack自动部署Openstack集群。
+###使用Saltstack自动部署Openstack集群。
 
-使用步骤：
+架构概述
+========
 
-1.切换到状态配置目录下 git clone https://github.com/unixhot/saltstack-openstack
-2.执行./openstack_source.sh 下载源码包到各个服务/files目录下。
-3.vim /etc/salt/master 增加pillar和states的设置。
-4.修改top.sls
+**
+
+**2.目录结构**
+
+```ObjectiveC
+|-- LICENSE
+|-- README.md
+|-- openstack
+|   |-- glance
+|   |   |-- files
+|   |   `-- glance.sls
+|   |-- horizon
+|   |   |-- files
+|   |   `-- horizon.sls
+|   |-- init
+|   |   |-- compute.sls
+|   |   |-- control.sls
+|   |   `-- files
+|   |-- keystone
+|   |   |-- files
+|   |   `-- keystone.sls
+|   |-- nova
+|   |   |-- files
+|   |   |-- nova_compute.sls
+|   |   |-- nova_config.sls
+|   |   |-- nova_control.sls
+|   |   `-- nova_install.sls
+|   `-- quantum
+|       |-- files
+|       |-- quantum_config.sls
+|       |-- quantum_install.sls
+|       |-- quantum_linuxbridge_agent.sls
+|       `-- quantum_server.sls
+|-- openstack_source.sh
+`-- pillar
+    |-- openstack
+    |   |-- glance.sls
+    |   |-- horizon.sls
+    |   |-- keystone.sls
+    |   |-- nova.sls
+    |   `-- quantum.sls
+    `-- top.sls
+
+``` 
+使用步骤
+========
+
+**1.下载SLS和源码安装包** 
+```ObjectiveC
+# git clone https://github.com/unixhot/saltstack-openstack
+# cd saltstack-openstack
+# ./openstack_source.sh
+```
+
+**2.修改Pillar目录的各个服务的配置**
+
+**3.修改top.sls**
+
+**All-In-One(所有服务均安装在一台服务器)**
+
+```ObjectiveC
+base:
+  'openstack-node1.unixhot.com':
+    - openstack.keystone.keystone
+    - openstack.glance.glance
+    - openstack.nova.nova_control
+    - openstack.quantum.quantum_server
+    - openstack.quantum.quantum_linuxbridge_agent
+    - openstack.horizon.horizon
+    - openstack.nova.nova_compute
+``` 
+
+**Cluster（一个控制节点，多个计算节点）**
+
+```ObjectiveC
+base:
+  'openstack-node1.unixhot.com':
+    - openstack.keystone.keystone
+    - openstack.glance.glance
+    - openstack.nova.nova_control
+    - openstack.quantum.quantum_server
+    - openstack.quantum.quantum_linuxbridge_agent
+    - openstack.horizon.horizon
+    
+  'openstack-node2.unixhot.com':
+    - openstack.nova.nova_compute
+    - openstack.quantum.quantum_linuxbridge_agent
+  
+  'openstack-node3.unixhot.com':
+    - openstack.nova.nova_compute
+    - openstack.quantum.quantum_linuxbridge_agent
+``` 
+
+
     
