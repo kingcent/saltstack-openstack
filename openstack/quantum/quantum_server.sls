@@ -1,6 +1,6 @@
 include:
   - openstack.quantum.quantum_config
-  - openstack.quantum.quantum_install
+  - openstack.quantum.quantum_control_install
 
 quantum-mysql:
   mysql_database.present:
@@ -75,7 +75,7 @@ openstack-quantum-server:
       - file: /etc/quantum/quantum.conf
       - file: /etc/quantum/plugins/linuxbridge/linuxbridge_conf.ini
     - require:
-      - cmd.run: quantum-install
+      - cmd.run: quantum-control-install
       - cmd.run: openstack-quantum-linuxbridge-agent
       - cmd.run: quantum-data-init
       - file: /var/log/quantum

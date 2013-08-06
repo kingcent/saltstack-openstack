@@ -1,6 +1,6 @@
 include:
   - openstack.nova.nova_config
-  - openstack.nova.nova_install
+  - openstack.nova.nova_control_install
 
 nova-mysql:
   mysql_database.present:
@@ -76,7 +76,7 @@ nova-api-service:
       - file: /etc/nova/rootwrap.d/compute.filters
       - file: /etc/nova/rootwrap.d/network.filters
     - require:
-      - cmd.run: nova-install
+      - cmd.run: nova-control-install
       - cmd.run: nova-api-service
       - cmd.run: nova-data-init
       - file: /var/log/nova
@@ -110,7 +110,7 @@ nova-cert-service:
       - file: /etc/nova/rootwrap.d/compute.filters
       - file: /etc/nova/rootwrap.d/network.filters
     - require:
-      - cmd.run: nova-install
+      - cmd.run: nova-control-install
       - cmd.run: nova-cert-service
       - cmd.run: nova-data-init
       - file: /var/log/nova
@@ -144,7 +144,7 @@ nova-conductor-service:
       - file: /etc/nova/rootwrap.d/compute.filters
       - file: /etc/nova/rootwrap.d/network.filters
     - require:
-      - cmd.run: nova-install
+      - cmd.run: nova-control-install
       - cmd.run: nova-conductor-service
       - cmd.run: nova-data-init
       - file: /var/log/nova
@@ -178,7 +178,7 @@ nova-console-service:
       - file: /etc/nova/rootwrap.d/compute.filters
       - file: /etc/nova/rootwrap.d/network.filters
     - require:
-      - cmd.run: nova-install
+      - cmd.run: nova-control-install
       - cmd.run: nova-console-service
       - cmd.run: nova-data-init
       - file: /var/log/nova
@@ -212,7 +212,7 @@ nova-consoleauth-service:
       - file: /etc/nova/rootwrap.d/compute.filters
       - file: /etc/nova/rootwrap.d/network.filters
     - require:
-      - cmd.run: nova-install
+      - cmd.run: nova-control-install
       - cmd.run: nova-consoleauth-service
       - cmd.run: nova-data-init
       - file: /var/log/nova
@@ -246,7 +246,7 @@ nova-novncproxy-service:
       - file: /etc/nova/rootwrap.d/compute.filters
       - file: /etc/nova/rootwrap.d/network.filters
     - require:
-      - cmd.run: nova-install
+      - cmd.run: nova-control-install
       - cmd.run: nova-novncproxy-service
       - cmd.run: nova-data-init
       - file: /var/log/nova
@@ -280,7 +280,7 @@ nova-scheduler-service:
       - file: /etc/nova/rootwrap.d/compute.filters
       - file: /etc/nova/rootwrap.d/network.filters
     - require:
-      - cmd.run: nova-install
+      - cmd.run: nova-control-install
       - cmd.run: nova-scheduler-service
       - cmd.run: nova-data-init
       - file: /var/log/nova

@@ -1,6 +1,6 @@
 include:
   - openstack.quantum.quantum_config
-  - openstack.quantum.quantum_install
+  - openstack.quantum.quantum_compute_install
 
 openstack-quantum-linuxbridge-agent:
   file.managed:
@@ -36,7 +36,7 @@ openstack-quantum-linuxbridge-agent:
       - file: /etc/quantum/quantum.conf
       - file: /etc/quantum/plugins/linuxbridge/linuxbridge_conf.ini
     - require:
-      - cmd.run: quantum-install
+      - cmd.run: quantum-compute-install
       - cmd.run: openstack-quantum-linuxbridge-agent
       - file: /var/log/quantum
       - file: /var/lib/quantum

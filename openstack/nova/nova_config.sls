@@ -61,10 +61,10 @@
       QUANTUM_PASSWD: {{ pillar['nova']['QUANTUM_PASSWD'] }}
       QUANTUM_TENANT: {{ pillar['nova']['QUANTUM_TENANT'] }}
       QUANTUM_AUTHURL: {{ pillar['nova']['QUANTUM_AUTHURL'] }}
-      VNC_LISTEN: {{ pillar['nova']['VNC_LISTEN'] }}
-      VNC_PROXY: {{ pillar['nova']['VNC_PROXY'] }}
+      VNC_LISTEN: {{ salt['network.ip_addrs']()[0] }}
+      VNC_PROXY: {{ salt['network.ip_addrs']()[0] }}
       NOVNC_PROXY_URL: {{ pillar['nova']['NOVNC_PROXY_URL'] }}
-
+      GLANCE_HOST: {{ pillar['nova']['GLANCE_HOST'] }}
 /etc/nova/rootwrap.d/api-metadata.filters:
   file.managed:
     - source: salt://openstack/nova/files/rootwrap.d/api-metadata.filters

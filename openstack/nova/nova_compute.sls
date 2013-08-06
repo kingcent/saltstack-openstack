@@ -1,6 +1,6 @@
 include:
   - openstack.nova.nova_config
-  - openstack.nova.nova_install
+  - openstack.nova.nova_compute_install
 
 nova-compute-service:
   file.managed:
@@ -30,7 +30,7 @@ nova-compute-service:
       - file: /etc/nova/rootwrap.d/compute.filters
       - file: /etc/nova/rootwrap.d/network.filters
     - require:
-      - cmd.run: nova-install
+      - cmd.run: nova-compute-install
       - cmd.run: nova-compute-service
       - file: /var/log/nova
       - file: /var/lib/nova/instances
