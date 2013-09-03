@@ -18,9 +18,9 @@ keystone user-role-add --user-id $ADMIN_USER \
                        --role-id $ADMIN_ROLE \
                        --tenant-id $ADMIN_TENANT
 					   
-USER_TENANT=$(get_id keystone tenant-create --name=unixhot)
+USER_TENANT=$(get_id keystone tenant-create --name=co-mall)
 USER_ROLE=$(get_id keystone role-create --name=user) 
-USER_USER=$(get_id keystone user-create --name=unixhot --pass="{{USER_PASSWD}}")
+USER_USER=$(get_id keystone user-create --name=co-mall --pass="{{USER_PASSWD}}")
 
 keystone user-role-add --user-id $USER_USER \
                        --role-id $USER_ROLE \
@@ -34,5 +34,5 @@ keystone service-create --name=keystone \
 
 keystone endpoint-create --region RegionOne --service-id $KEYSTONE_SERVICE \
     --publicurl "http://{{CONTROL_IP}}:5000/v2.0" \
-    --adminurl "http://{{CONTROL_IP}}:35353/v2.0" \
+    --adminurl "http://{{CONTROL_IP}}:35357/v2.0" \
     --internalurl "http://{{CONTROL_IP}}:5000/v2.0"

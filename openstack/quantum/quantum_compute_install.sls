@@ -12,5 +12,5 @@ quantum-compute-install:
     - name: cd /usr/local/src/ && tar zxf quantum-2013.1.2.tar.gz && cd quantum-2013.1.2/tools && pip-python install -r pip-requires && cd ../ && python setup.py install
     - unless: pip-python freeze | grep quantum==2013.1.2
     - require:
-      - pkg: openstack-pkg-init
+      - pkg: compute-init
       - file: /usr/local/src/quantum-2013.1.2.tar.gz

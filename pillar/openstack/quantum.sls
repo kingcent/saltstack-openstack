@@ -16,4 +16,10 @@ quantum:
   ADMIN_PASSWD: unixhot
   ADMIN_TOKEN: aa160a08kjsldf386d58
   CONTROL_IP: 10.1.1.11
+  {% if grains['fqdn'] == 'openstack-node1.unixhot.com' or grains['fqdn'] == 'openstack-node2.unixhot.com' %}
+  VM_INTERFACE: eth2
+  {% elif grains['fqdn'] == 'openstack-node3.unixhot.com' %}
+  VM_INTERFACE: eth1
+  {% else %}
   VM_INTERFACE: em1
+  {% endif %}

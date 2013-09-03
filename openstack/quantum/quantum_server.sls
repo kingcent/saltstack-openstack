@@ -74,9 +74,10 @@ openstack-quantum-server:
       - file: /etc/quantum/rootwrap.d/ryu-plugin.filters
       - file: /etc/quantum/quantum.conf
       - file: /etc/quantum/plugins/linuxbridge/linuxbridge_conf.ini
+      - file: openstack-quantum-server
     - require:
       - cmd.run: quantum-control-install
-      - cmd.run: openstack-quantum-linuxbridge-agent
       - cmd.run: quantum-data-init
+      - cmd.run: openstack-quantum-server
       - file: /var/log/quantum
       - file: /var/lib/quantum

@@ -35,6 +35,7 @@ openstack-quantum-linuxbridge-agent:
       - file: /etc/quantum/rootwrap.d/ryu-plugin.filters
       - file: /etc/quantum/quantum.conf
       - file: /etc/quantum/plugins/linuxbridge/linuxbridge_conf.ini
+      - file: openstack-quantum-linuxbridge-agent
     - require:
       - cmd.run: quantum-compute-install
       - cmd.run: openstack-quantum-linuxbridge-agent

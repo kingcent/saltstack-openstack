@@ -24,10 +24,7 @@ compute-init:
       - python-numdisplay
       - device-mapper
       - bridge-utils
-      - mod_wsgi
       - dnsmasq
-      - dnsmasq-utils
-
   file.managed:
     - name: /root/.pip/pip.conf
     - source: salt://openstack/init/files/pip.conf

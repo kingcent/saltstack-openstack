@@ -22,7 +22,5 @@ nova:
   QUANTUM_PASSWD: unixhot
   QUANTUM_TENANT: admin
   QUANTUM_AUTHURL: http://10.1.1.11:5000/v2.0
-  VNC_LISTEN: 10.1.1.11
-  VNC_PROXY: 10.1.1.11
   NOVNC_PROXY_URL: http://10.1.1.11:6080/vnc_auto.html
   GLANCE_HOST: 10.1.1.11
